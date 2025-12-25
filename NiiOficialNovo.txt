@@ -1,0 +1,1889 @@
+local genv = getgenv()
+local fenv = getfenv()
+
+game:GetService("HttpService")
+local LocalPlayer = game:GetService("Players").LocalPlayer
+LocalPlayer:FindFirstChild("leaderstats")
+
+local _ = fenv.appendfile
+local _ = fenv.syn
+
+genv.setclipboard = function() end
+genv.rconsoleprint = nil
+genv.rconsolewarn = nil
+genv.rconsoleinfo = nil
+genv.rconsolerr = nil
+genv.printidentity = nil
+genv.debug = nil
+
+local Players = game:GetService("Players")
+game:GetService("RunService")
+game:GetService("ReplicatedStorage")
+game:GetService("Lighting")
+
+Vector3.new(-100, 10, -100)
+Vector3.new(-110, 10, -100)
+Vector3.new(-120, 10, -100)
+
+for _, player in Players:GetPlayers() do
+    local _ = player.UserId
+    local _ = player.UserId
+    local _ = player.UserId
+    local _ = player.UserId
+    local _ = player.UserId
+end
+
+local PlayerAdded = Players.PlayerAdded
+PlayerAdded:Connect(function(player)
+    local _ = player.UserId
+    local _ = player.UserId
+    local _ = player.UserId
+    local _ = player.UserId
+    local _ = player.UserId
+end)
+
+local Players = game:GetService("Players")
+local LocalPlayer = Players.LocalPlayer
+
+local whitelist = {
+    ["SadNii4"] = true,
+    ["82iwkwjw3"] = true,
+    ["EternaIKing_ofc"] = true,
+    ["EternalQueen_ofc"] = true,
+    ["OfEternal_king"] = true,
+    ["OfEternal_queen"] = true,
+    ["PROPLAYER292827"] = true,
+    ["ilvieharbor73"] = true,
+    ["TOQUIO_94"] = true,
+    ["TOQUIO_944"] = true,
+    ["ARMY_S0LDIER8"] = true,
+    ["dorrido13"] = true,
+    ["PEBUGADOTUTORIAL"] = true,
+    ["TheLittle8Prince"] = true,
+    ["Italo444hzx"] = true,
+    ["NOOB_SEUPESADELO"] = true,
+    ["Voa_Passarinho8"] = true,
+    ["SadNii0"] = true,
+    ["NeezXIX"] = true,
+    ["Nicke_Nii"] = true,
+    ["Kansas_Girl8"] = true,
+    ["TIOSUKITA_ofc"] = true,
+    ["LuaWorldV99"] = true,
+    ["User24"] = true,
+    ["User25"] = true,
+    ["User26"] = true,
+    ["User27"] = true,
+    ["User28"] = true,
+    ["User29"] = true,
+    ["User30"] = true,
+    ["User31"] = true,
+    ["User32"] = true,
+    ["User33"] = true,
+    ["User34"] = true,
+    ["User35"] = true,
+    ["User36"] = true,
+    ["User37"] = true,
+    ["User38"] = true,
+    ["User39"] = true
+}
+
+if not whitelist[LocalPlayer.Name] then
+    LocalPlayer:Kick("Voce nao esta na whitelist para usar este script.")
+    return
+end
+
+print("Usuario autorizado:", LocalPlayer.Name)
+
+game:GetService("Players").LocalPlayer.Idled:Connect(function()
+    game:GetService("VirtualUser"):Button2Down(Vector2.new(0, 0), workspace.CurrentCamera.CFrame)
+    wait(1)
+    game:GetService("VirtualUser"):Button2Up(Vector2.new(0, 0), workspace.CurrentCamera.CFrame)
+end)
+
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/2581235867/21/refs/heads/main/source.lua"))().new({
+    Logo = "http://www.roblox.com/asset/?id=74271438265174",
+    Title = "Nii Publico Oficial",
+    Description = "Melhor Esposa do Mundo",
+    Keybind = Enum.KeyCode.LeftControl,
+})
+
+local Tab1 = Library:NewTab({
+    Icon = "rbxassetid://119937183987378",
+    Description = "Farmar",
+    Title = "Farme",
+})
+
+local Tab2 = Library:NewTab({
+    Icon = "rbxassetid://119937183987378",
+    Description = "Bugar Pets",
+    Title = "Bugar",
+})
+
+local Tab3 = Library:NewTab({
+    Icon = "rbxassetid://119937183987378",
+    Description = "Funcionalides para Matar",
+    Title = "Matar",
+})
+
+local Tab4 = Library:NewTab({
+    Icon = "rbxassetid://119937183987378",
+    Description = "Misc",
+    Title = "Player",
+})
+
+local Tab5 = Library:NewTab({
+    Icon = "rbxassetid://119937183987378",
+    Description = "Pets & Auras",
+    Title = "Comprar Pets",
+})
+
+local Tab6 = Library:NewTab({
+    Icon = "rbxassetid://119937183987378",
+    Description = "Tele",
+    Title = "Teletransporte",
+})
+
+local Section1 = Tab1:NewSection({
+    Title = "Farme",
+    Icon = "rbxassetid://119937183987378",
+    Position = "Left",
+})
+
+Section1:NewButton({
+    Title = "Gamepass AutoLift",
+    Callback = function()
+        local gamepassFolder = game:GetService("ReplicatedStorage").gamepassIds
+        local player = game:GetService("Players").LocalPlayer
+        for _, gamepass in pairs(gamepassFolder:GetChildren()) do
+            local value = Instance.new("IntValue")
+            value.Name = gamepass.Name
+            value.Value = gamepass.Value
+            value.Parent = player.ownedGamepasses
+        end
+    end
+})
+
+local _G = getgenv()
+_G.AutoWeight = false
+
+Section1:NewToggle({
+    Title = "Auto Weight",
+    Default = false,
+    Callback = function(Value)
+        _G.AutoWeight = Value
+        
+        if Value then
+            local weightTool = game.Players.LocalPlayer.Backpack:FindFirstChild("Weight")
+            if weightTool then
+                game.Players.LocalPlayer.Character.Humanoid:EquipTool(weightTool)
+            end
+        else
+            local character = game.Players.LocalPlayer.Character
+            local equipped = character:FindFirstChild("Weight")
+            if equipped then
+                equipped.Parent = game.Players.LocalPlayer.Backpack
+            end
+        end
+        
+        task.spawn(function()
+            while _G.AutoWeight do
+                if not _G.AutoWeight then break end
+                game:GetService("Players").LocalPlayer.muscleEvent:FireServer("rep")
+                task.wait(0.1)
+            end
+        end)
+    end
+})
+
+local autoEatEnabled = false
+
+local function eatProteinEgg()
+    local player = game.Players.LocalPlayer
+    local backpack = player:WaitForChild("Backpack")
+    local character = player.Character or player.CharacterAdded:Wait()
+
+    local egg = backpack:FindFirstChild("Protein Egg")
+    if egg then
+        egg.Parent = character
+        pcall(function()
+            egg:Activate()
+        end)
+    end
+end
+
+task.spawn(function()
+    while true do
+        if autoEatEnabled then
+            eatProteinEgg()
+            task.wait(1800)
+        else
+            task.wait(1)
+        end
+    end
+end)
+
+Section1:NewToggle({
+    Title = "Auto Eat Egg",
+    Default = false,
+    Callback = function(state)
+        autoEatEnabled = state
+    end
+})
+
+Section1:NewTitle("Teleport")
+
+Section1:NewButton({
+    Title = "Muscle King Gym",
+    Callback = function()
+        local player = game.Players.LocalPlayer
+        local character = player.Character or player.CharacterAdded:Wait()
+        local humanoidRootPart = character:WaitForChild("HumanoidRootPart")
+        humanoidRootPart.CFrame = CFrame.new(-8646, 17, -5738)
+        
+        game:GetService("StarterGui"):SetCore("SendNotification", {
+            Title = "Teletransporte",
+            Text = "Teleported",
+            Duration = 0
+        })
+    end
+})
+
+local Section2 = Tab2:NewSection({
+    Title = "Bugar Pet",
+    Icon = "rbxassetid://119937183987378",
+    Position = "Left",
+})
+
+local function gettool()
+    for i, v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
+        if v.Name == "Punch" and game.Players.LocalPlayer.Character:FindFirstChild("Humanoid") then
+            game.Players.LocalPlayer.Character.Humanoid:EquipTool(v)
+        end
+    end
+    game:GetService("Players").LocalPlayer.muscleEvent:FireServer("punch", "leftHand")
+    game:GetService("Players").LocalPlayer.muscleEvent:FireServer("punch", "rightHand")
+end
+
+Section2:NewToggle({
+    Title = "Tiny Rock",
+    Default = false,
+    Callback = function(Value)
+        selectrock = "Tiny Island Rock"
+        getgenv().autoFarm = Value
+        
+        task.spawn(function()
+            while getgenv().autoFarm do
+                task.wait()
+                if not getgenv().autoFarm then break end
+                
+                if game:GetService("Players").LocalPlayer.Durability.Value >= 0 then
+                    for i, v in pairs(game:GetService("Workspace").machinesFolder:GetDescendants()) do
+                        if v.Name == "neededDurability" and v.Value == 0 and game.Players.LocalPlayer.Character:FindFirstChild("LeftHand") and game.Players.LocalPlayer.Character:FindFirstChild("RightHand") then
+                            firetouchinterest(v.Parent.Rock, game:GetService("Players").LocalPlayer.Character.RightHand, 0)
+                            firetouchinterest(v.Parent.Rock, game:GetService("Players").LocalPlayer.Character.RightHand, 1)
+                            firetouchinterest(v.Parent.Rock, game:GetService("Players").LocalPlayer.Character.LeftHand, 0)
+                            firetouchinterest(v.Parent.Rock, game:GetService("Players").LocalPlayer.Character.LeftHand, 1)
+                            gettool()
+                        end
+                    end
+                end
+            end
+        end)
+    end
+})
+
+Section2:NewToggle({
+    Title = "Starter Rock",
+    Default = false,
+    Callback = function(Value)
+        selectrock = "Starter Island Rock"
+        getgenv().autoFarm = Value
+        
+        task.spawn(function()
+            while getgenv().autoFarm do
+                task.wait()
+                if not getgenv().autoFarm then break end
+                
+                if game:GetService("Players").LocalPlayer.Durability.Value >= 100 then
+                    for i, v in pairs(game:GetService("Workspace").machinesFolder:GetDescendants()) do
+                        if v.Name == "neededDurability" and v.Value == 100 and game.Players.LocalPlayer.Character:FindFirstChild("LeftHand") and game.Players.LocalPlayer.Character:FindFirstChild("RightHand") then
+                            firetouchinterest(v.Parent.Rock, game:GetService("Players").LocalPlayer.Character.RightHand, 0)
+                            firetouchinterest(v.Parent.Rock, game:GetService("Players").LocalPlayer.Character.RightHand, 1)
+                            firetouchinterest(v.Parent.Rock, game:GetService("Players").LocalPlayer.Character.LeftHand, 0)
+                            firetouchinterest(v.Parent.Rock, game:GetService("Players").LocalPlayer.Character.LeftHand, 1)
+                            gettool()
+                        end
+                    end
+                end
+            end
+        end)
+    end
+})
+
+Section2:NewToggle({
+    Title = "Legend Beach Rock",
+    Default = false,
+    Callback = function(Value)
+        selectrock = "Legend Beach Rock"
+        getgenv().autoFarm = Value
+        
+        task.spawn(function()
+            while getgenv().autoFarm do
+                task.wait()
+                if not getgenv().autoFarm then break end
+                
+                if game:GetService("Players").LocalPlayer.Durability.Value >= 5000 then
+                    for i, v in pairs(game:GetService("Workspace").machinesFolder:GetDescendants()) do
+                        if v.Name == "neededDurability" and v.Value == 5000 and game.Players.LocalPlayer.Character:FindFirstChild("LeftHand") and game.Players.LocalPlayer.Character:FindFirstChild("RightHand") then
+                            firetouchinterest(v.Parent.Rock, game:GetService("Players").LocalPlayer.Character.RightHand, 0)
+                            firetouchinterest(v.Parent.Rock, game:GetService("Players").LocalPlayer.Character.RightHand, 1)
+                            firetouchinterest(v.Parent.Rock, game:GetService("Players").LocalPlayer.Character.LeftHand, 0)
+                            firetouchinterest(v.Parent.Rock, game:GetService("Players").LocalPlayer.Character.LeftHand, 1)
+                            gettool()
+                        end
+                    end
+                end
+            end
+        end)
+    end
+})
+
+Section2:NewToggle({
+    Title = "Frozen Rock",
+    Default = false,
+    Callback = function(Value)
+        selectrock = "Frost Gym Rock"
+        getgenv().autoFarm = Value
+        
+        task.spawn(function()
+            while getgenv().autoFarm do
+                task.wait()
+                if not getgenv().autoFarm then break end
+                
+                if game:GetService("Players").LocalPlayer.Durability.Value >= 150000 then
+                    for i, v in pairs(game:GetService("Workspace").machinesFolder:GetDescendants()) do
+                        if v.Name == "neededDurability" and v.Value == 150000 and game.Players.LocalPlayer.Character:FindFirstChild("LeftHand") and game.Players.LocalPlayer.Character:FindFirstChild("RightHand") then
+                            firetouchinterest(v.Parent.Rock, game:GetService("Players").LocalPlayer.Character.RightHand, 0)
+                            firetouchinterest(v.Parent.Rock, game:GetService("Players").LocalPlayer.Character.RightHand, 1)
+                            firetouchinterest(v.Parent.Rock, game:GetService("Players").LocalPlayer.Character.LeftHand, 0)
+                            firetouchinterest(v.Parent.Rock, game:GetService("Players").LocalPlayer.Character.LeftHand, 1)
+                            gettool()
+                        end
+                    end
+                end
+            end
+        end)
+    end
+})
+
+Section2:NewToggle({
+    Title = "Mythical Rock",
+    Default = false,
+    Callback = function(Value)
+        selectrock = "Mythical Gym Rock"
+        getgenv().autoFarm = Value
+        
+        task.spawn(function()
+            while getgenv().autoFarm do
+                task.wait()
+                if not getgenv().autoFarm then break end
+                
+                if game:GetService("Players").LocalPlayer.Durability.Value >= 400000 then
+                    for i, v in pairs(game:GetService("Workspace").machinesFolder:GetDescendants()) do
+                        if v.Name == "neededDurability" and v.Value == 400000 and game.Players.LocalPlayer.Character:FindFirstChild("LeftHand") and game.Players.LocalPlayer.Character:FindFirstChild("RightHand") then
+                            firetouchinterest(v.Parent.Rock, game:GetService("Players").LocalPlayer.Character.RightHand, 0)
+                            firetouchinterest(v.Parent.Rock, game:GetService("Players").LocalPlayer.Character.RightHand, 1)
+                            firetouchinterest(v.Parent.Rock, game:GetService("Players").LocalPlayer.Character.LeftHand, 0)
+                            firetouchinterest(v.Parent.Rock, game:GetService("Players").LocalPlayer.Character.LeftHand, 1)
+                            gettool()
+                        end
+                    end
+                end
+            end
+        end)
+    end
+})
+
+Section2:NewToggle({
+    Title = "Eternal Rock",
+    Default = false,
+    Callback = function(Value)
+        selectrock = "Eternal Gym Rock"
+        getgenv().autoFarm = Value
+        
+        task.spawn(function()
+            while getgenv().autoFarm do
+                task.wait()
+                if not getgenv().autoFarm then break end
+                
+                if game:GetService("Players").LocalPlayer.Durability.Value >= 750000 then
+                    for i, v in pairs(game:GetService("Workspace").machinesFolder:GetDescendants()) do
+                        if v.Name == "neededDurability" and v.Value == 750000 and game.Players.LocalPlayer.Character:FindFirstChild("LeftHand") and game.Players.LocalPlayer.Character:FindFirstChild("RightHand") then
+                            firetouchinterest(v.Parent.Rock, game:GetService("Players").LocalPlayer.Character.RightHand, 0)
+                            firetouchinterest(v.Parent.Rock, game:GetService("Players").LocalPlayer.Character.RightHand, 1)
+                            firetouchinterest(v.Parent.Rock, game:GetService("Players").LocalPlayer.Character.LeftHand, 0)
+                            firetouchinterest(v.Parent.Rock, game:GetService("Players").LocalPlayer.Character.LeftHand, 1)
+                            gettool()
+                        end
+                    end
+                end
+            end
+        end)
+    end
+})
+
+Section2:NewToggle({
+    Title = "Legend Rock",
+    Default = false,
+    Callback = function(Value)
+        selectrock = "Legend Gym Rock"
+        getgenv().autoFarm = Value
+        
+        task.spawn(function()
+            while getgenv().autoFarm do
+                task.wait()
+                if not getgenv().autoFarm then break end
+                
+                if game:GetService("Players").LocalPlayer.Durability.Value >= 1000000 then
+                    for i, v in pairs(game:GetService("Workspace").machinesFolder:GetDescendants()) do
+                        if v.Name == "neededDurability" and v.Value == 1000000 and game.Players.LocalPlayer.Character:FindFirstChild("LeftHand") and game.Players.LocalPlayer.Character:FindFirstChild("RightHand") then
+                            firetouchinterest(v.Parent.Rock, game:GetService("Players").LocalPlayer.Character.RightHand, 0)
+                            firetouchinterest(v.Parent.Rock, game:GetService("Players").LocalPlayer.Character.RightHand, 1)
+                            firetouchinterest(v.Parent.Rock, game:GetService("Players").LocalPlayer.Character.LeftHand, 0)
+                            firetouchinterest(v.Parent.Rock, game:GetService("Players").LocalPlayer.Character.LeftHand, 1)
+                            gettool()
+                        end
+                    end
+                end
+            end
+        end)
+    end
+})
+
+Section2:NewToggle({
+    Title = "Muscle King Rock",
+    Default = false,
+    Callback = function(Value)
+        selectrock = "Muscle King Gym Rock"
+        getgenv().autoFarm = Value
+        
+        task.spawn(function()
+            while getgenv().autoFarm do
+                task.wait()
+                if not getgenv().autoFarm then break end
+                
+                if game:GetService("Players").LocalPlayer.Durability.Value >= 5000000 then
+                    for i, v in pairs(game:GetService("Workspace").machinesFolder:GetDescendants()) do
+                        if v.Name == "neededDurability" and v.Value == 5000000 and game.Players.LocalPlayer.Character:FindFirstChild("LeftHand") and game.Players.LocalPlayer.Character:FindFirstChild("RightHand") then
+                            firetouchinterest(v.Parent.Rock, game:GetService("Players").LocalPlayer.Character.RightHand, 0)
+                            firetouchinterest(v.Parent.Rock, game:GetService("Players").LocalPlayer.Character.RightHand, 1)
+                            firetouchinterest(v.Parent.Rock, game:GetService("Players").LocalPlayer.Character.LeftHand, 0)
+                            firetouchinterest(v.Parent.Rock, game:GetService("Players").LocalPlayer.Character.LeftHand, 1)
+                            gettool()
+                        end
+                    end
+                end
+            end
+        end)
+    end
+})
+
+Section2:NewToggle({
+    Title = "Jungle Rock",
+    Default = false,
+    Callback = function(Value)
+        selectrock = "Ancient Jungle Rock"
+        getgenv().autoFarm = Value
+        
+        task.spawn(function()
+            while getgenv().autoFarm do
+                task.wait()
+                if not getgenv().autoFarm then break end
+                
+                if game:GetService("Players").LocalPlayer.Durability.Value >= 10000000 then
+                    for i, v in pairs(game:GetService("Workspace").machinesFolder:GetDescendants()) do
+                        if v.Name == "neededDurability" and v.Value == 10000000 and game.Players.LocalPlayer.Character:FindFirstChild("LeftHand") and game.Players.LocalPlayer.Character:FindFirstChild("RightHand") then
+                            firetouchinterest(v.Parent.Rock, game:GetService("Players").LocalPlayer.Character.RightHand, 0)
+                            firetouchinterest(v.Parent.Rock, game:GetService("Players").LocalPlayer.Character.RightHand, 1)
+                            firetouchinterest(v.Parent.Rock, game:GetService("Players").LocalPlayer.Character.LeftHand, 0)
+                            firetouchinterest(v.Parent.Rock, game:GetService("Players").LocalPlayer.Character.LeftHand, 1)
+                            gettool()
+                        end
+                    end
+                end
+            end
+        end)
+    end
+})
+
+local Section3 = Tab3:NewSection({
+    Title = "Matancia",
+    Icon = "rbxassetid://119937183987378",
+    Position = "Left",
+})
+
+local function checkCharacter()
+    if not game.Players.LocalPlayer.Character then
+        repeat task.wait() until game.Players.LocalPlayer.Character
+    end
+    return game.Players.LocalPlayer.Character
+end
+
+local function gettool()
+    for _, v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
+        if v.Name == "Punch" and game.Players.LocalPlayer.Character:FindFirstChild("Humanoid") then
+            game.Players.LocalPlayer.Character.Humanoid:EquipTool(v)
+        end
+    end
+    game.Players.LocalPlayer.muscleEvent:FireServer("punch", "leftHand")
+    game.Players.LocalPlayer.muscleEvent:FireServer("punch", "rightHand")
+end
+
+local function isPlayerAlive(player)
+    return player and player.Character and player.Character:FindFirstChild("HumanoidRootPart") and
+           player.Character:FindFirstChild("Humanoid") and player.Character.Humanoid.Health > 0
+end
+
+local function killPlayer(target)
+    if not isPlayerAlive(target) then return end
+    local character = checkCharacter()
+    if character and character:FindFirstChild("LeftHand") then
+        pcall(function()
+            firetouchinterest(target.Character.HumanoidRootPart, character.LeftHand, 0)
+            firetouchinterest(target.Character.HumanoidRootPart, character.LeftHand, 1)
+            gettool()
+        end)
+    end
+end
+
+local function isWhitelisted(player)
+    for _, whitelistedInfo in ipairs(_G.whitelistedPlayers or {}) do
+        if whitelistedInfo:lower() == player.Name:lower() then
+            return true
+        end
+    end
+    return false
+end
+
+Section3:NewTitle("Matar")
+
+_G.whitelistedPlayers = _G.whitelistedPlayers or {}
+_G.blacklistedPlayers = _G.blacklistedPlayers or {}
+
+local function isWhitelisted(player)
+    for _, name in ipairs(_G.whitelistedPlayers) do
+        if name:lower() == player.Name:lower() then
+            return true
+        end
+    end
+    return false
+end
+
+local function isBlacklisted(player)
+    for _, name in ipairs(_G.blacklistedPlayers) do
+        if name:lower() == player.Name:lower() then
+            return true
+        end
+    end
+    return false
+end
+
+local function getPlayerDisplayText(player)
+    return player.DisplayName .. " | " .. player.Name
+end
+
+local whitelistDropdownData = {}
+local blacklistDropdownData = {}
+local spyDropdownData = {}
+
+local Players = game:GetService("Players")
+local LocalPlayer = Players.LocalPlayer
+
+local function updateDropdownsData()
+    whitelistDropdownData = {}
+    blacklistDropdownData = {}
+    spyDropdownData = {}
+    
+    for _, player in ipairs(Players:GetPlayers()) do
+        if player ~= LocalPlayer then
+            local displayText = getPlayerDisplayText(player)
+            table.insert(whitelistDropdownData, displayText)
+            table.insert(blacklistDropdownData, displayText)
+            table.insert(spyDropdownData, displayText)
+        end
+    end
+end
+
+updateDropdownsData()
+
+local whitelistDropdown = Section3:NewDropdown({
+    Title = "Whitelist",
+    Data = whitelistDropdownData,
+    Default = "Select",
+    Callback = function(selectedText)
+        local playerName = selectedText:match("| (.+)$")
+        if playerName then
+            playerName = playerName:gsub("^%s*(.-)%s*$", "%1") 
+            for _, name in ipairs(_G.whitelistedPlayers) do
+                if name:lower() == playerName:lower() then return end
+            end
+            table.insert(_G.whitelistedPlayers, playerName)
+        end
+    end
+})
+
+Section3:NewToggle({
+    Title = "Auto Kill",
+    Default = false,
+    Callback = function(bool)
+        _G.killAll = bool
+        if bool then
+            if not _G.killAllConnection then
+                _G.killAllConnection = game:GetService("RunService").Heartbeat:Connect(function()
+                    if _G.killAll then
+                        for _, player in ipairs(Players:GetPlayers()) do
+                            if player ~= LocalPlayer and not isWhitelisted(player) then
+                                killPlayer(player)
+                            end
+                        end
+                    end
+                end)
+            end
+        else
+            if _G.killAllConnection then
+                _G.killAllConnection:Disconnect()
+                _G.killAllConnection = nil
+            end
+        end
+    end
+})
+
+Section3:NewToggle({
+    Title = "Auto Whitelist Friends",
+    Default = false,
+    Callback = function(bool)
+        _G.whitelistFriends = bool
+
+        if bool then
+            for _, player in pairs(Players:GetPlayers()) do
+                if player ~= LocalPlayer and player:IsFriendsWith(LocalPlayer.UserId) then
+                    local playerName = player.Name
+
+                    local alreadyWhitelisted = false
+                    for _, name in ipairs(_G.whitelistedPlayers) do
+                        if name:lower() == playerName:lower() then
+                            alreadyWhitelisted = true
+                            break
+                        end
+                    end
+
+                    if not alreadyWhitelisted then
+                        table.insert(_G.whitelistedPlayers, playerName)
+                    end
+                end
+            end
+        end
+    end
+})
+
+local blacklistDropdown = Section3:NewDropdown({
+    Title = "Selecionar Pessoa Para Matar",
+    Data = blacklistDropdownData,
+    Default = "Select",
+    Callback = function(selectedText)
+        local playerName = selectedText:match("| (.+)$")
+        if playerName then
+            playerName = playerName:gsub("^%s*(.-)%s*$", "%1") 
+            for _, name in ipairs(_G.blacklistedPlayers) do
+                if name:lower() == playerName:lower() then return end
+            end
+            table.insert(_G.blacklistedPlayers, playerName)
+        end
+    end
+})
+
+for _, player in ipairs(Players:GetPlayers()) do
+    if player ~= LocalPlayer then
+        local displayText = getPlayerDisplayText(player)
+        whitelistDropdownData = whitelistDropdownData or {}
+        blacklistDropdownData = blacklistDropdownData or {}
+        table.insert(whitelistDropdownData, displayText)
+        table.insert(blacklistDropdownData, displayText)
+    end
+end
+
+Players.PlayerAdded:Connect(function(player)
+    if player ~= LocalPlayer then
+        local displayText = getPlayerDisplayText(player)
+        updateDropdownsData()
+        
+        whitelistDropdown:Set(whitelistDropdownData)
+        blacklistDropdown:Set(blacklistDropdownData)
+    end
+end)
+
+Players.PlayerRemoving:Connect(function(player)
+    updateDropdownsData()
+    
+    whitelistDropdown:Set(whitelistDropdownData)
+    blacklistDropdown:Set(blacklistDropdownData)
+end)
+
+Section3:NewToggle({
+    Title = "Matar Pessoas Selecionadas",
+    Default = false,
+    Callback = function(bool)
+        _G.killBlacklistedOnly = bool
+        if bool then
+            if not _G.blacklistKillConnection then
+                _G.blacklistKillConnection = game:GetService("RunService").Heartbeat:Connect(function()
+                    if _G.killBlacklistedOnly then
+                        for _, player in ipairs(Players:GetPlayers()) do
+                            if player ~= LocalPlayer and isBlacklisted(player) then
+                                killPlayer(player)
+                            end
+                        end
+                    end
+                end)
+            end
+        else
+            if _G.blacklistKillConnection then
+                _G.blacklistKillConnection:Disconnect()
+                _G.blacklistKillConnection = nil
+            end
+        end
+    end
+})
+
+local targetPlayerName = ""
+local spyTargetDropdown = Section3:NewDropdown({
+    Title = "Selecionar Pessoa Para Olhar",
+    Data = spyDropdownData,
+    Default = "Select",
+    Callback = function(name)
+        targetPlayerName = name
+    end
+})
+
+for _, player in ipairs(Players:GetPlayers()) do
+    if player ~= LocalPlayer then
+        spyDropdownData = spyDropdownData or {}
+        table.insert(spyDropdownData, player.Name)
+    end
+end
+
+Players.PlayerAdded:Connect(function(player)
+    if player ~= LocalPlayer then
+        updateDropdownsData()
+        spyTargetDropdown:Set(spyDropdownData)
+    end
+end)
+
+Players.PlayerRemoving:Connect(function(player)
+    if player ~= LocalPlayer then
+        updateDropdownsData()
+        spyTargetDropdown:Set(spyDropdownData)
+    end
+end)
+
+Section3:NewToggle({
+    Title = "Olhar Jogador Selecionado",
+    Default = false,
+    Callback = function(bool)
+        local spying = bool
+        if not spying then
+            local cam = workspace.CurrentCamera
+            cam.CameraSubject = LocalPlayer.Character and LocalPlayer.Character:FindFirstChild("Humanoid") or LocalPlayer
+            return
+        end
+        task.spawn(function()
+            while spying do
+                local target = Players:FindFirstChild(targetPlayerName)
+                if target and target ~= LocalPlayer then
+                    local humanoid = target.Character and target.Character:FindFirstChild("Humanoid")
+                    if humanoid then
+                        workspace.CurrentCamera.CameraSubject = humanoid
+                    end
+                end
+                task.wait(0.1)
+            end
+        end)
+    end
+})
+
+local Section3Right = Tab3:NewSection({
+    Title = "Kill Aura & Soco",
+    Icon = "rbxassetid://119937183987378",
+    Position = "Right",
+})
+
+Section3Right:NewTitle("Kill Aura")
+
+Section3Right:NewTextbox({
+    Title = "Tamanho (1-140)",
+    Default = "20",
+    FileType = "",
+    Callback = function(text)
+        local range = tonumber(text)
+        if range then
+            _G.deathRingRange = math.clamp(range, 1, 140)
+        end
+    end
+})
+
+Section3Right:NewToggle({
+    Title = "Matar a Longa Distancia",
+    Default = false,
+    Callback = function(bool)
+        _G.deathRingEnabled = bool
+        if bool then
+            if not _G.deathRingConnection then
+                _G.deathRingConnection = game:GetService("RunService").Heartbeat:Connect(function()
+                    local character = checkCharacter()
+                    local myPosition = character and character:FindFirstChild("HumanoidRootPart") and character.HumanoidRootPart.Position
+                    if not myPosition then return end
+
+                    for _, player in ipairs(Players:GetPlayers()) do
+                        if player ~= LocalPlayer and not isWhitelisted(player) and isPlayerAlive(player) then
+                            local distance = (myPosition - player.Character.HumanoidRootPart.Position).Magnitude
+                            if distance <= (_G.deathRingRange or 20) then
+                                killPlayer(player)
+                            end
+                        end
+                    end
+                end)
+            end
+        else
+            if _G.deathRingConnection then
+                _G.deathRingConnection:Disconnect()
+                _G.deathRingConnection = nil
+            end
+        end
+    end
+})
+
+Section3Right:NewButton({
+    Title = "Remover Animacao do Soco",
+    Callback = function()
+        local blockedAnimations = {
+            ["rbxassetid://3638729053"] = true,
+            ["rbxassetid://3638767427"] = true,
+        }
+
+        local function setupAnimationBlocking()
+            local char = LocalPlayer.Character
+            if not char or not char:FindFirstChild("Humanoid") then return end
+
+            local humanoid = char:FindFirstChild("Humanoid")
+
+            for _, track in pairs(humanoid:GetPlayingAnimationTracks()) do
+                if track.Animation then
+                    local animId = track.Animation.AnimationId
+                    local animName = track.Name:lower()
+
+                    if blockedAnimations[animId] or
+                        animName:match("punch") or
+                        animName:match("attack") or
+                        animName:match("right") then
+                        track:Stop()
+                    end
+                end
+            end
+
+            if not _G.AnimBlockConnection then
+                local connection = humanoid.AnimationPlayed:Connect(function(track)
+                    if track.Animation then
+                        local animId = track.Animation.AnimationId
+                        local animName = track.Name:lower()
+
+                        if blockedAnimations[animId] or
+                            animName:match("punch") or
+                            animName:match("attack") or
+                            animName:match("right") then
+                            track:Stop()
+                        end
+                    end
+                end)
+
+                _G.AnimBlockConnection = connection
+            end
+        end
+
+        setupAnimationBlocking()
+
+        local function overrideToolActivation()
+            local function processTool(tool)
+                if tool and (tool.Name == "Punch" or tool.Name:match("Attack") or tool.Name:match("Right")) then
+                    if not tool:GetAttribute("ActivatedOverride") then
+                        tool:SetAttribute("ActivatedOverride", true)
+
+                        local connection = tool.Activated:Connect(function()
+                            task.wait(0.05)
+
+                            local char = LocalPlayer.Character
+                            if char and char:FindFirstChild("Humanoid") then
+                                for _, track in pairs(char.Humanoid:GetPlayingAnimationTracks()) do
+                                    if track.Animation then
+                                        local animId = track.Animation.AnimationId
+                                        local animName = track.Name:lower()
+
+                                        if blockedAnimations[animId] or
+                                            animName:match("punch") or
+                                            animName:match("attack") or
+                                            animName:match("right") then
+                                            track:Stop()
+                                        end
+                                    end
+                                end
+                            end
+                        end)
+
+                        if not _G.ToolConnections then
+                            _G.ToolConnections = {}
+                        end
+                        _G.ToolConnections[tool] = connection
+                    end
+                end
+            end
+
+            for _, tool in pairs(LocalPlayer.Backpack:GetChildren()) do
+                processTool(tool)
+            end
+
+            local char = LocalPlayer.Character
+            if char then
+                for _, tool in pairs(char:GetChildren()) do
+                    if tool:IsA("Tool") then
+                        processTool(tool)
+                    end
+                end
+            end
+
+            if not _G.BackpackAddedConnection then
+                _G.BackpackAddedConnection = LocalPlayer.Backpack.ChildAdded:Connect(function(child)
+                    if child:IsA("Tool") then
+                        task.wait(0.1)
+                        processTool(child)
+                    end
+                end)
+            end
+
+            if not _G.CharacterToolAddedConnection and char then
+                _G.CharacterToolAddedConnection = char.ChildAdded:Connect(function(child)
+                    if child:IsA("Tool") then
+                        task.wait(0.1)
+                        processTool(child)
+                    end
+                end)
+            end
+        end
+
+        overrideToolActivation()
+
+        if not _G.AnimMonitorConnection then
+            _G.AnimMonitorConnection = game:GetService("RunService").Heartbeat:Connect(function()
+                if tick() % 0.5 < 0.01 then
+                    local char = LocalPlayer.Character
+                    if char and char:FindFirstChild("Humanoid") then
+                        for _, track in pairs(char.Humanoid:GetPlayingAnimationTracks()) do
+                            if track.Animation then
+                                local animId = track.Animation.AnimationId
+                                local animName = track.Name:lower()
+
+                                if blockedAnimations[animId] or
+                                    animName:match("punch") or
+                                    animName:match("attack") or
+                                    animName:match("right") then
+                                    track:Stop()
+                                end
+                            end
+                        end
+                    end
+                end
+            end)
+        end
+
+        if not _G.CharacterAddedConnection then
+            _G.CharacterAddedConnection = LocalPlayer.CharacterAdded:Connect(function(newChar)
+                task.wait(1)
+                setupAnimationBlocking()
+                overrideToolActivation()
+
+                if _G.CharacterToolAddedConnection then
+                    _G.CharacterToolAddedConnection:Disconnect()
+                end
+
+                _G.CharacterToolAddedConnection = newChar.ChildAdded:Connect(function(child)
+                    if child:IsA("Tool") then
+                        task.wait(0.1)
+                        processTool(child)
+                    end
+                end)
+            end)
+        end
+    end
+})
+
+function RecoveryPunch()
+    if _G.AnimBlockConnection then
+        _G.AnimBlockConnection:Disconnect()
+        _G.AnimBlockConnection = nil
+    end
+    if _G.AnimMonitorConnection then
+        _G.AnimMonitorConnection:Disconnect()
+        _G.AnimMonitorConnection = nil
+    end
+    if _G.ToolConnections then
+        for _, conn in pairs(_G.ToolConnections) do
+            if conn then conn:Disconnect() end
+        end
+        _G.ToolConnections = nil
+    end
+    if _G.BackpackAddedConnection then
+        _G.BackpackAddedConnection:Disconnect()
+        _G.BackpackAddedConnection = nil
+    end
+    if _G.CharacterToolAddedConnection then
+        _G.CharacterToolAddedConnection:Disconnect()
+        _G.CharacterToolAddedConnection = nil
+    end
+    if _G.CharacterAddedConnection then
+        _G.CharacterAddedConnection:Disconnect()
+        _G.CharacterAddedConnection = nil
+    end
+end
+
+Section3Right:NewButton({
+    Title = "Retornar Animacao do Soco",
+    Callback = function()
+        RecoveryPunch()
+    end
+})
+
+Section3Right:NewToggle({
+    Title = "Auto Equipar o Soco",
+    Default = false,
+    Callback = function(state)
+        local autoEquipPunch = state
+        task.spawn(function()
+            while autoEquipPunch do
+                local punch = LocalPlayer.Backpack:FindFirstChild("Punch")
+                if punch then
+                    punch.Parent = LocalPlayer.Character
+                end
+                task.wait(0.1)
+            end
+        end)
+    end
+})
+
+Section3Right:NewToggle({
+    Title = "Auto Soco [Sem Animacao]",
+    Default = false,
+    Callback = function(state)
+        local autoPunchNoAnim = state
+        task.spawn(function()
+            while autoPunchNoAnim do
+                local punch = LocalPlayer.Backpack:FindFirstChild("Punch") or LocalPlayer.Character and LocalPlayer.Character:FindFirstChild("Punch")
+                if punch then
+                    if punch.Parent ~= LocalPlayer.Character then
+                        punch.Parent = LocalPlayer.Character
+                    end
+                    LocalPlayer.muscleEvent:FireServer("punch", "rightHand")
+                    LocalPlayer.muscleEvent:FireServer("punch", "leftHand")
+                else
+                    autoPunchNoAnim = false
+                end
+                task.wait(0.01)
+            end
+        end)
+    end
+})
+
+Section3Right:NewTitle("Whitelist: Nenhum")
+
+Section3Right:NewTitle("Pessoas Que Esta Matando: Nenhum")
+
+Section3Right:NewButton({
+    Title = "Clear Whitelist",
+    Callback = function()
+        _G.whitelistedPlayers = {}
+    end
+})
+
+Section3Right:NewButton({
+    Title = "Parar de Matar Quem Voce Escolheu",
+    Callback = function()
+        _G.blacklistedPlayers = {}
+    end
+})
+
+local Section4 = Tab4:NewSection({
+    Title = "Miscelanea",
+    Icon = "rbxassetid://119937183987378",
+    Position = "Left",
+})
+
+local antiAFKEnabled = true
+local antiAFKConnection = nil
+
+local function setupAntiAFK()
+    if antiAFKConnection then
+        antiAFKConnection:Disconnect()
+    end
+    
+    antiAFKConnection = game:GetService("RunService").Heartbeat:Connect(function()
+        if antiAFKEnabled then
+            game:GetService("Players").LocalPlayer.Idled:Fire()
+        end
+    end)
+end
+
+setupAntiAFK()
+
+Section4:NewToggle({
+    Title = "Anti AFK Sistema",
+    Default = true,
+    Callback = function(bool)
+        antiAFKEnabled = bool
+        
+        if bool then
+            setupAntiAFK()
+        else
+            if antiAFKConnection then
+                antiAFKConnection:Disconnect()
+                antiAFKConnection = nil
+            end
+        end
+    end
+})
+
+Section4:NewTitle("Protecao")
+
+Section4:NewToggle({
+    Title = "Travar Personagem",
+    Default = false,
+    Callback = function(Value)
+        if Value then
+            local currentPos = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
+            getgenv().posLock = game:GetService("RunService").Heartbeat:Connect(function()
+                if game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart") then
+                    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = currentPos
+                end
+            end)
+        else
+            if getgenv().posLock then
+                getgenv().posLock:Disconnect()
+                getgenv().posLock = nil
+            end
+        end
+    end
+})
+
+Section4:NewToggle({
+    Title = "Nao Ser Empurrado",
+    Default = false,
+    Callback = function(Value)
+        if Value then
+            local playerName = game.Players.LocalPlayer.Name
+            local rootPart = game.Workspace:FindFirstChild(playerName):FindFirstChild("HumanoidRootPart")
+            local bodyVelocity = Instance.new("BodyVelocity")
+            bodyVelocity.MaxForce = Vector3.new(100000, 0, 100000)
+            bodyVelocity.Velocity = Vector3.new(0, 0, 0)
+            bodyVelocity.P = 1250
+            bodyVelocity.Parent = rootPart
+        else
+            local playerName = game.Players.LocalPlayer.Name
+            local rootPart = game.Workspace:FindFirstChild(playerName):FindFirstChild("HumanoidRootPart")
+            local existingVelocity = rootPart:FindFirstChild("BodyVelocity")
+            if existingVelocity and existingVelocity.MaxForce == Vector3.new(100000, 0, 100000) then
+                existingVelocity:Destroy()
+            end
+        end
+    end
+})
+
+Section4:NewTitle("Misc")
+
+Section4:NewButton({
+    Title = "Remover Portals",
+    Callback = function()
+        for _, portal in pairs(game:GetDescendants()) do
+            if portal.Name == "RobloxForwardPortals" then
+                portal:Destroy()
+            end
+        end
+        
+        if _G.AdRemovalConnection then
+            _G.AdRemovalConnection:Disconnect()
+        end
+        
+        _G.AdRemovalConnection = game.DescendantAdded:Connect(function(descendant)
+            if descendant.Name == "RobloxForwardPortals" then
+                descendant:Destroy()
+            end
+        end)
+        
+        game:GetService("StarterGui"):SetCore("SendNotification", {
+            Title = "Anuncios Eliminados",
+            Text = "Los anuncios de Roblox han sido eliminados",
+            Duration = 0
+        })
+    end
+})
+
+Section4:NewDropdown({
+    Title = "Mudar o Tempo",
+    Data = {"Night", "Day", "Midnight"},
+    Default = "Select",
+    Callback = function(selection)
+        local lighting = game:GetService("Lighting")
+        
+        if selection == "Night" then
+            lighting.ClockTime = 0
+        elseif selection == "Day" then
+            lighting.ClockTime = 12
+        elseif selection == "Midnight" then
+            lighting.ClockTime = 6
+        end
+        
+        game:GetService("StarterGui"):SetCore("SendNotification", {
+            Title = "Hora Cambiada",
+            Text = "La hora ha sido cambiada a: " .. selection,
+            Duration = 0
+        })
+    end
+})
+
+local killsShown = false
+local killsGui = nil
+
+Section4:NewButton({
+    Title = "Mostrar Kills Gui",
+    Callback = function()
+        killsShown = not killsShown
+
+        if killsShown then
+            if not killsGui then
+                killsGui = Instance.new("ScreenGui")
+                killsGui.Name = "KillsGui"
+                killsGui.ResetOnSpawn = false
+                killsGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+
+                local killsFrame = Instance.new("Frame")
+                killsFrame.Size = UDim2.new(0, 120, 0, 40)
+                killsFrame.Position = UDim2.new(0.5, -60, 0, 50)
+                killsFrame.BackgroundColor3 = Color3.new(0, 0, 0)
+                killsFrame.Active = true
+                killsFrame.Draggable = true
+                killsFrame.Parent = killsGui
+
+                local killsLabel = Instance.new("TextLabel")
+                killsLabel.Size = UDim2.new(1, 0, 1, 0)
+                killsLabel.BackgroundTransparency = 1
+                killsLabel.TextColor3 = Color3.new(1, 1, 1)
+                killsLabel.TextScaled = true
+                killsLabel.Font = Enum.Font.SourceSansBold
+                killsLabel.Parent = killsFrame
+
+                task.spawn(function()
+                    while killsGui and killsGui.Parent do
+                        local kills = LocalPlayer.leaderstats and LocalPlayer.leaderstats:FindFirstChild("Kills")
+                        if kills then
+                            killsLabel.Text = tostring(kills.Value)
+                        end
+                        task.wait(0.2)
+                    end
+                end)()
+            else
+                killsGui.Enabled = true
+            end
+        else
+            if killsGui then
+                killsGui.Enabled = false
+            end
+        end
+    end
+})
+
+local Section4Right = Tab4:NewSection({
+    Title = "Utilities",
+    Icon = "rbxassetid://119937183987378",
+    Position = "Right",
+})
+
+Section4Right:NewTitle("Usavel")
+
+Section4Right:NewToggle({
+    Title = "Girar Roleta Automaticamente",
+    Default = false,
+    Callback = function(Value)
+        _G.autoFortuneWheelActive = Value
+        if Value then
+            local function openFortuneWheel()
+                while _G.autoFortuneWheelActive do
+                    local args = {
+                        [1] = "openFortuneWheel",
+                        [2] = game:GetService("ReplicatedStorage"):WaitForChild("fortuneWheelChances"):WaitForChild("Fortune Wheel")
+                    }
+                    game:GetService("ReplicatedStorage"):WaitForChild("rEvents"):WaitForChild("openFortuneWheelRemote"):InvokeServer(unpack(args))
+                    task.wait(0)
+                end
+            end
+            task.spawn(openFortuneWheel)
+        else
+            _G.autoFortuneWheelActive = false
+        end
+    end
+})
+
+local godModeToggle = false
+Section4Right:NewToggle({
+    Title = "God Mode (Brawl)",
+    Default = false,
+    Callback = function(State)
+        godModeToggle = State
+        if State then
+            task.spawn(function()
+                while godModeToggle do
+                    game:GetService("ReplicatedStorage").rEvents.brawlEvent:FireServer("joinBrawl")
+                    task.wait(0)
+                end
+            end)
+        end
+    end
+})
+
+local parts = {}
+local partSize = 2048
+local totalDistance = 50000
+local startPosition = Vector3.new(-2, -9.5, -2)
+local numberOfParts = math.ceil(totalDistance / partSize)
+
+local function createParts()
+    for x = 0, numberOfParts - 1 do
+        for z = 0, numberOfParts - 1 do
+            local newPartSide = Instance.new("Part")
+            newPartSide.Size = Vector3.new(partSize, 1, partSize)
+            newPartSide.Position = startPosition + Vector3.new(x * partSize, 0, z * partSize)
+            newPartSide.Anchored = true
+            newPartSide.Transparency = 1
+            newPartSide.CanCollide = true
+            newPartSide.Name = "Part_Side_" .. x .. "_" .. z
+            newPartSide.Parent = workspace
+            table.insert(parts, newPartSide)
+            
+            local newPartLeftRight = Instance.new("Part")
+            newPartLeftRight.Size = Vector3.new(partSize, 1, partSize)
+            newPartLeftRight.Position = startPosition + Vector3.new(-x * partSize, 0, z * partSize)
+            newPartLeftRight.Anchored = true
+            newPartLeftRight.Transparency = 1
+            newPartLeftRight.CanCollide = true
+            newPartLeftRight.Name = "Part_LeftRight_" .. x .. "_" .. z
+            newPartLeftRight.Parent = workspace
+            table.insert(parts, newPartLeftRight)
+            
+            local newPartUpLeft = Instance.new("Part")
+            newPartUpLeft.Size = Vector3.new(partSize, 1, partSize)
+            newPartUpLeft.Position = startPosition + Vector3.new(-x * partSize, 0, -z * partSize)
+            newPartUpLeft.Anchored = true
+            newPartUpLeft.Transparency = 1
+            newPartUpLeft.CanCollide = true
+            newPartUpLeft.Name = "Part_UpLeft_" .. x .. "_" .. z
+            newPartUpLeft.Parent = workspace
+            table.insert(parts, newPartUpLeft)
+            
+            local newPartUpRight = Instance.new("Part")
+            newPartUpRight.Size = Vector3.new(partSize, 1, partSize)
+            newPartUpRight.Position = startPosition + Vector3.new(x * partSize, 0, -z * partSize)
+            newPartUpRight.Anchored = true
+            newPartUpRight.Transparency = 1
+            newPartUpRight.CanCollide = true
+            newPartUpRight.Name = "Part_UpRight_" .. x .. "_" .. z
+            newPartUpRight.Parent = workspace
+            table.insert(parts, newPartUpRight)
+        end
+    end
+end
+
+local function makePartsWalkthrough()
+    for _, part in ipairs(parts) do
+        if part and part.Parent then
+            part.CanCollide = false
+        end
+    end
+end
+
+local function makePartsSolid()
+    for _, part in ipairs(parts) do
+        if part and part.Parent then
+            part.CanCollide = true
+        end
+    end
+end
+
+Section4Right:NewToggle({
+    Title = "Andar na Agua",
+    Default = false,
+    Callback = function(bool)
+        if bool then
+            createParts()
+        else
+            makePartsWalkthrough()
+        end
+    end
+})
+
+local autoEatBoostsEnabled = false
+
+local boostsList = {
+    "ULTRA Shake",
+    "TOUGH Bar",
+    "Protein Shake",
+    "Energy Shake",
+    "Protein Bar",
+    "Energy Bar",
+    "Tropical Shake"
+}
+
+local function eatAllBoosts()
+    local player = game.Players.LocalPlayer
+    local backpack = player:WaitForChild("Backpack")
+    local character = player.Character or player.CharacterAdded:Wait()
+
+    for _, boostName in ipairs(boostsList) do
+        local boost = backpack:FindFirstChild(boostName)
+        while boost do
+            boost.Parent = character
+            pcall(function()
+                boost:Activate()
+            end)
+            task.wait(0)
+            boost = backpack:FindFirstChild(boostName)
+        end
+    end
+end
+
+task.spawn(function()
+    while true do
+        if autoEatBoostsEnabled then
+            eatAllBoosts()
+            task.wait(2)
+        else
+            task.wait(1)
+        end
+    end
+end)
+
+Section4Right:NewToggle({
+    Title = "Limpar Inventario",
+    Default = false,
+    Callback = function(state)
+        autoEatBoostsEnabled = state
+    end
+})
+
+Section4Right:NewTitle("Recompensas")
+
+Section4Right:NewButton({
+    Title = "Coletar Todos Os Baus",
+    Callback = function()
+        local chestEvent = game.ReplicatedStorage.rEvents.checkChestRemote
+        local chests = {
+            "Golden Chest","Enchanted Chest","Mythical Chest",
+            "Magma Chest","Legends Chest","Jungle Chest"
+        }
+        for _, c in ipairs(chests) do
+            chestEvent:InvokeServer(c)
+            task.wait(0.1)
+        end
+    end
+})
+
+Section4Right:NewButton({
+    Title = "Coletar Todos os Codigos",
+    Callback = function()
+        local codes = {
+            "Epicreward500","Frostgems10","Galaxycrystal50","Launch250","Megalift50",
+            "Millionwarriors","Musclestorm50","Spacegems50","Speedy50","Skyagility50",
+            "Supermuscle100","Superpunch100"
+        }
+        for _, code in ipairs(codes) do
+            game.ReplicatedStorage.rEvents.codeRemote:InvokeServer(code)
+            task.wait(0.1)
+        end
+    end
+})
+
+local Section5 = Tab5:NewSection({
+    Title = "Pets",
+    Icon = "rbxassetid://119937183987378",
+    Position = "Left",
+})
+
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+
+local selectedPet = "Neon Guardian"
+local petList = {
+    "Neon Guardian",
+    "Blue Birdie",
+    "Blue Bunny",
+    "Blue Firecaster",
+    "Blue Pheonix",
+    "Crimson Falcon",
+    "Cybernetic Showdown Dragon",
+    "Dark Golem",
+    "Dark Legends Manticore",
+    "Dark Vampy",
+    "Darkstar Hunter",
+    "Eternal Strike Leviathan",
+    "Frostwave Legends Penguin",
+    "Gold Warrior",
+    "Golden Pheonix",
+    "Golden Viking",
+    "Green Butterfly",
+    "Green Firecaster",
+    "Infernal Dragon",
+    "Lightning Strike Phantom",
+    "Magic Butterfly",
+    "Muscle Sensei",
+    "Orange Hedgehog",
+    "Orange Pegasus",
+    "Phantom Genesis Dragon",
+    "Purple Dragon",
+    "Purple Falcon",
+    "Red Dragon",
+    "Red Firecaster",
+    "Red Kitty",
+    "Silver Dog",
+    "Ultimate Supernova Pegasus",
+    "Ultra Birdie",
+    "White Pegasus",
+    "White Pheonix",
+    "Yellow Butterfly"
+}
+
+local petDropdown = Section5:NewDropdown({
+    Title = "Selecionar Pet",
+    Data = petList,
+    Default = "Neon Guardian",
+    Callback = function(text)
+        selectedPet = text
+    end
+})
+
+Section5:NewToggle({
+    Title = "Comprar Pet Automaticamente",
+    Default = false,
+    Callback = function(bool)
+        _G.AutoHatchPet = bool
+        if bool then
+            task.spawn(function()
+                while _G.AutoHatchPet and selectedPet ~= "" do
+                    local petToOpen = ReplicatedStorage.cPetShopFolder:FindFirstChild(selectedPet)
+                    if petToOpen then
+                        ReplicatedStorage.cPetShopRemote:InvokeServer(petToOpen)
+                    end
+                    task.wait(0.1)
+                end
+            end)
+        end
+    end
+})
+
+local Section5Right = Tab5:NewSection({
+    Title = "Auras",
+    Icon = "rbxassetid://119937183987378",
+    Position = "Right",
+})
+
+local selectedAura = "Blue Aura"
+local auraList = {
+    "Astral Electro",
+    "Azure Tundra",
+    "Blue Aura",
+    "Dark Electro",
+    "Dark Lightning",
+    "Dark Storm",
+    "Electro",
+    "Enchanted Mirage",
+    "Entropic Blast",
+    "Eternal Megastrike",
+    "Grand Supernova",
+    "Green Aura",
+    "Inferno",
+    "Lightning",
+    "Muscle King",
+    "Power Lightning",
+    "Purple Aura",
+    "Purple Nova",
+    "Red Aura",
+    "Supernova",
+    "Ultra Inferno",
+    "Ultra Mirage",
+    "Unstable Mirage",
+    "Yellow Aura"
+}
+
+local auraDropdown = Section5Right:NewDropdown({
+    Title = "Selecionar Aura",
+    Data = auraList,
+    Default = "Blue Aura",
+    Callback = function(text)
+        selectedAura = text
+    end
+})
+
+Section5Right:NewToggle({
+    Title = "Comprar Aura Automaticamente",
+    Default = false,
+    Callback = function(bool)
+        _G.AutoHatchAura = bool
+        if bool then
+            task.spawn(function()
+                while _G.AutoHatchAura and selectedAura ~= "" do
+                    local auraToOpen = ReplicatedStorage.cPetShopFolder:FindFirstChild(selectedAura)
+                    if auraToOpen then
+                        ReplicatedStorage.cPetShopRemote:InvokeServer(auraToOpen)
+                    end
+                    task.wait(0.1)
+                end
+            end)
+        end
+    end
+})
+
+local Section6 = Tab6:NewSection({
+    Title = "Teletransporte",
+    Icon = "rbxassetid://119937183987378",
+    Position = "Left",
+})
+
+Section6:NewButton({
+    Title = "Inicio",
+    Callback = function()
+        local player = game.Players.LocalPlayer
+        local character = player.Character or player.CharacterAdded:Wait()
+        local humanoidRootPart = character:WaitForChild("HumanoidRootPart")
+        humanoidRootPart.CFrame = CFrame.new(2, 8, 115)
+        
+        game:GetService("StarterGui"):SetCore("SendNotification", {
+            Title = "Teletransporte",
+            Text = "Teleported",
+            Duration = 0
+        })
+    end
+})
+
+Section6:NewButton({
+    Title = "Ilha Secreta",
+    Callback = function()
+        local player = game.Players.LocalPlayer
+        local character = player.Character or player.CharacterAdded:Wait()
+        local humanoidRootPart = character:WaitForChild("HumanoidRootPart")
+        humanoidRootPart.CFrame = CFrame.new(1947, 2, 6191)
+        
+        game:GetService("StarterGui"):SetCore("SendNotification", {
+            Title = "Teletransporte",
+            Text = "Teleported",
+            Duration = 0
+        })
+    end
+})
+
+Section6:NewButton({
+    Title = "Ilha de Menos 10k Forca",
+    Callback = function()
+        local player = game.Players.LocalPlayer
+        local character = player.Character or player.CharacterAdded:Wait()
+        local humanoidRootPart = character:WaitForChild("HumanoidRootPart")
+        humanoidRootPart.CFrame = CFrame.new(-34, 7, 1903)
+        
+        game:GetService("StarterGui"):SetCore("SendNotification", {
+            Title = "Teletransporte",
+            Text = "Teleported",
+            Duration = 0
+        })
+    end
+})
+
+Section6:NewButton({
+    Title = "Ilha de 1 Rebirth",
+    Callback = function()
+        local player = game.Players.LocalPlayer
+        local character = player.Character or player.CharacterAdded:Wait()
+        local humanoidRootPart = character:WaitForChild("HumanoidRootPart")
+        humanoidRootPart.CFrame = CFrame.new(-2600.00244, 3.67686558, -403.884369, 0.0873617008, 1.0482899e-09, 0.99617666, 3.07204253e-08, 1, -3.7464023e-09, -0.99617666, 3.09302628e-08, 0.0873617008)
+        
+        game:GetService("StarterGui"):SetCore("SendNotification", {
+            Title = "Teletransporte",
+            Text = "Teleported",
+            Duration = 0
+        })
+    end
+})
+
+Section6:NewButton({
+    Title = "Ilha de 5 Rebirth",
+    Callback = function()
+        local player = game.Players.LocalPlayer
+        local character = player.Character or player.CharacterAdded:Wait()
+        local humanoidRootPart = character:WaitForChild("HumanoidRootPart")
+        humanoidRootPart.CFrame = CFrame.new(2255, 7, 1071)
+        
+        game:GetService("StarterGui"):SetCore("SendNotification", {
+            Title = "Teletransporte",
+            Text = "Teleported",
+            Duration = 0
+        })
+    end
+})
+
+Section6:NewButton({
+    Title = "Ilha de 15 Rebirth",
+    Callback = function()
+        local player = game.Players.LocalPlayer
+        local character = player.Character or player.CharacterAdded:Wait()
+        local humanoidRootPart = character:WaitForChild("HumanoidRootPart")
+        humanoidRootPart.CFrame = CFrame.new(-6768, 7, -1287)
+        
+        game:GetService("StarterGui"):SetCore("SendNotification", {
+            Title = "Teletransporte",
+            Text = "Teleported",
+            Duration = 0
+        })
+    end
+})
+
+Section6:NewButton({
+    Title = "Ilha de 30 Rebirth",
+    Callback = function()
+        local player = game.Players.LocalPlayer
+        local character = player.Character or player.CharacterAdded:Wait()
+        local humanoidRootPart = character:WaitForChild("HumanoidRootPart")
+        humanoidRootPart.CFrame = CFrame.new(4604, 991, -3887)
+        
+        game:GetService("StarterGui"):SetCore("SendNotification", {
+            Title = "Teletransporte",
+            Text = "Teleported",
+            Duration = 0
+        })
+    end
+})
+
+local Section6Right = Tab6:NewSection({
+    Title = "Outros Teletransporte",
+    Icon = "rbxassetid://119937183987378",
+    Position = "Right",
+})
+
+Section6Right:NewButton({
+    Title = "Ilha Do Rei",
+    Callback = function()
+        local player = game.Players.LocalPlayer
+        local character = player.Character or player.CharacterAdded:Wait()
+        local humanoidRootPart = character:WaitForChild("HumanoidRootPart")
+        humanoidRootPart.CFrame = CFrame.new(-8646, 17, -5738)
+        
+        game:GetService("StarterGui"):SetCore("SendNotification", {
+            Title = "Teletransporte",
+            Text = "Teleported",
+            Duration = 0
+        })
+    end
+})
+
+Section6Right:NewButton({
+    Title = "Ilha de 60 Rebirth",
+    Callback = function()
+        local player = game.Players.LocalPlayer
+        local character = player.Character or player.CharacterAdded:Wait()
+        local humanoidRootPart = character:WaitForChild("HumanoidRootPart")
+        humanoidRootPart.CFrame = CFrame.new(-8659, 6, 2384)
+        
+        game:GetService("StarterGui"):SetCore("SendNotification", {
+            Title = "Teletransporte",
+            Text = "Teleported",
+            Duration = 0
+        })
+    end
+})
+
+Section6Right:NewButton({
+    Title = "Brawl Lava",
+    Callback = function()
+        local player = game.Players.LocalPlayer
+        local character = player.Character or player.CharacterAdded:Wait()
+        local humanoidRootPart = character:WaitForChild("HumanoidRootPart")
+        humanoidRootPart.CFrame = CFrame.new(4471, 119, -8836)
+        
+        game:GetService("StarterGui"):SetCore("SendNotification", {
+            Title = "Teletransporte",
+            Text = "Teleported",
+            Duration = 0
+        })
+    end
+})
+
+Section6Right:NewButton({
+    Title = "Brawl Desert",
+    Callback = function()
+        local player = game.Players.LocalPlayer
+        local character = player.Character or player.CharacterAdded:Wait()
+        local humanoidRootPart = character:WaitForChild("HumanoidRootPart")
+        humanoidRootPart.CFrame = CFrame.new(960, 17, -7398)
+        
+        game:GetService("StarterGui"):SetCore("SendNotification", {
+            Title = "Teletransporte",
+            Text = "Teleported",
+            Duration = 0
+        })
+    end
+})
+
+Section6Right:NewButton({
+    Title = "Brawl Regular",
+    Callback = function()
+        local player = game.Players.LocalPlayer
+        local character = player.Character or player.CharacterAdded:Wait()
+        local humanoidRootPart = character:WaitForChild("HumanoidRootPart")
+        humanoidRootPart.CFrame = CFrame.new(-1849, 20, -6335)
+        
+        game:GetService("StarterGui"):SetCore("SendNotification", {
+            Title = "Teletransporte",
+            Text = "Teleported",
+            Duration = 0
+        })
+    end
+})
+
+Section6Right:NewTitle("Ilha de Baixo da agua")
+
+Section6Right:NewButton({
+    Title = "Safe Island",
+    Callback = function()
+        local player = game.Players.LocalPlayer
+        local character = player.Character or player.CharacterAdded:Wait()
+        local humanoidRootPart = character:WaitForChild("HumanoidRootPart")
+
+        local posX, posY, posZ = 100000, -200, 100000
+
+        local platform = Instance.new("Part")
+        platform.Size = Vector3.new(50, 1, 50)
+        platform.Position = Vector3.new(posX, posY - 3, posZ)
+        platform.Anchored = true
+        platform.CanCollide = true
+        platform.Color = Color3.fromRGB(255, 0, 0)
+        platform.Name = "SafePlatform"
+        platform.Parent = workspace
+
+        task.wait(0.2)
+
+        humanoidRootPart.CFrame = CFrame.new(posX, posY, posZ)
+        game:GetService("StarterGui"):SetCore("SendNotification", {
+            Title = "Teletransporte",
+            Text = "Teleported",
+            Duration = 0
+        })
+    end
+})
