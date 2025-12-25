@@ -2783,10 +2783,10 @@ end
 infoTab = window:AddTab("Info")
 
 infoTab:Show()
-infoTab:AddLabel("made by Drcvzz Crackes By ZTX").TextSize = 20
+infoTab:AddLabel("made by Drcvzz Cracked By ZTX").TextSize = 20
 infoTab:AddLabel("Official Discord sever").TextSize = 20
 infoTab:AddButton("Copy Discord link", function()
-    local link = "https://discord.gg/TBdFWBAU"
+    local link = ""
     if setclipboard then
         setclipboard(link)
         game.StarterGui:SetCore("SendNotification", {
@@ -2804,7 +2804,7 @@ infoTab:AddButton("Copy Discord link", function()
 end)
 
 infoTab:AddLabel("")
-wLabel = infoTab:AddLabel("Drcvzz paid V1 Crackes By ZTX")
+wLabel = infoTab:AddLabel("Drcvzz paid V1 Cracked By ZTX")
 wLabel.TextSize = 30
 wLabel.Font = Enum.Font.Arcade
 
